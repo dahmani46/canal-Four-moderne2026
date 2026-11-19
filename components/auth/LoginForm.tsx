@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { Role } from "@/lib/auth";
 
@@ -10,7 +10,15 @@ interface LoginFormProps {
   homePath: string;
 }
 
-export function LoginForm({ role, title, homePath }: LoginFormProps) {
+export function LoginForm(props: LoginFormProps) {
+  return (
+    <Suspense>
+      <LoginFormInner {...props} />
+    </Suspense>
+  );
+}
+
+function LoginFormInner({ role, title, homePath }: LoginFormProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");

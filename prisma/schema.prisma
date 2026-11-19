@@ -16,9 +16,10 @@ model Participant {
   composition      String
   accepteReglement Boolean
   consentementRGPD Boolean
-  statut           String   // "confirmee" | "attente"
+  statut           String   // "confirmee" | "attente" | "refusee"
   createdAt        DateTime @default(now())
   notes            Note[]
+  notifications    Notification[]
 }
 
 model User {
@@ -48,4 +49,18 @@ model ConcoursConfig {
   placesMax        Int      @default(20)
   dateCloture      DateTime
   resultatsPublies Boolean  @default(false)
+}
+
+model Notification {
+  id            String    @id @default(cuid())
+  participantId String
+  participant   Participant @relation(fields: [participantId], references: [id])
+  type          String    // "confirmation" | "rappel"
+  statut        String    @default("a_envoyer") // "a_envoyer" | "envoyee"
+  sujet         String
+  contenu       String
+  preparedAt    DateTime  @default(now())
+  preparedBy    String
+  sentAt        DateTime?
+  sentBy        String?
 }

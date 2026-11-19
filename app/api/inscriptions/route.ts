@@ -9,12 +9,8 @@ const inscriptionSchema = z.object({
   telephone: z.string().trim().min(6, "Téléphone invalide"),
   nomBuche: z.string().trim().min(1, "Nom de la bûche requis"),
   composition: z.string().trim().min(1, "Composition requise"),
-  accepteReglement: z.literal(true, {
-    errorMap: () => ({ message: "Vous devez accepter le règlement" }),
-  }),
-  consentementRGPD: z.literal(true, {
-    errorMap: () => ({ message: "Le consentement RGPD est requis" }),
-  }),
+  accepteReglement: z.literal(true, { message: "Vous devez accepter le règlement" }),
+  consentementRGPD: z.literal(true, { message: "Le consentement RGPD est requis" }),
 });
 
 export async function POST(request: NextRequest) {

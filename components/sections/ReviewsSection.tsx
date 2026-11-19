@@ -28,19 +28,29 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
             </p>
           </div>
         ) : (
-          <div className="mt-10 grid grid-cols-1 gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((r) => (
-              <article key={r.id} className="flex flex-col gap-3 rounded-xl2 bg-white p-6 shadow-soft">
-                <Stars rating={r.rating} />
-                <p className="text-sm text-ink/80">{r.comment}</p>
-                <div className="mt-auto flex items-center gap-2 pt-2 text-xs text-ink/50">
-                  <span className="font-semibold text-bordeaux">{r.author}</span>
-                  <span>·</span>
-                  <time dateTime={r.date}>{new Date(r.date).toLocaleDateString("fr-FR")}</time>
-                </div>
-              </article>
-            ))}
-          </div>
+          <>
+            <div className="mt-10 grid grid-cols-1 gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+              {reviews.map((r, i) => (
+                <article
+                  key={r.id}
+                  className="reveal flex flex-col gap-3 rounded-xl2 bg-white p-6 shadow-soft"
+                  style={{ transitionDelay: `${i * 120}ms` }}
+                >
+                  <Stars rating={r.rating} />
+                  <p className="text-sm text-ink/80">{r.comment}</p>
+                  <div className="mt-auto flex items-center gap-2 pt-2 text-xs text-ink/50">
+                    <span className="font-semibold text-bordeaux">{r.author}</span>
+                    <span>·</span>
+                    <time dateTime={r.date}>{new Date(r.date).toLocaleDateString("fr-FR")}</time>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className="mt-6 text-xs italic text-ink/40">
+              Avis fictifs présentés à titre de démonstration, en attendant les premiers vrais
+              retours clients.
+            </p>
+          </>
         )}
       </div>
     </section>
