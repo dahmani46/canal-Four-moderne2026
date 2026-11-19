@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Participant {
+  id               String   @id @default(cuid())
+  prenom           String
+  nom              String
+  email            String   @unique
+  telephone        String
+  nomBuche         String
+  composition      String
+  accepteReglement Boolean
+  consentementRGPD Boolean
+  statut           String   // "confirmee" | "attente"
+  createdAt        DateTime @default(now())
+  notes            Note[]
+}
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String
+  role         String // "admin_patisserie" | "jury" | "admin_general"
+  nom          String
+}
+
+model Note {
+  id               String   @id @default(cuid())
+  participantId    String
+  participant      Participant @relation(fields: [participantId], references: [id])
+  juryUserId       String
+  gout             Int // /20
+  techniqueTexture Int // /10
+  visuel           Int // /10
+  originalite      Int // /10
+  createdAt        DateTime @default(now())
+
+  @@unique([participantId, juryUserId])
+}
+
+model ConcoursConfig {
+  id               String   @id @default("singleton")
+  placesMax        Int      @default(20)
+  dateCloture      DateTime
+  resultatsPublies Boolean  @default(false)
+}
