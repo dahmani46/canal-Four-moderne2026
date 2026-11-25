@@ -4,7 +4,7 @@
 
 :root {
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Jost", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 html,
@@ -64,6 +64,36 @@ img.object-cover {
 @media (prefers-reduced-motion: reduce) {
   img.object-cover {
     transition: none;
+  }
+}
+
+/* ---------- Neige qui tombe (section Savoir-faire) ---------- */
+
+.snowflake {
+  position: absolute;
+  top: -12px;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, var(--o));
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  animation: snow-fall var(--d) linear var(--delay) infinite;
+}
+
+@keyframes snow-fall {
+  from {
+    transform: translate3d(0, -5vh, 0);
+  }
+  to {
+    transform: translate3d(var(--drift), 115vh, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none;
+    display: none;
   }
 }
 

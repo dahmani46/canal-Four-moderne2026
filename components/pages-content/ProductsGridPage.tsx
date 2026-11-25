@@ -11,9 +11,9 @@ export function ProductsGridPage({ page }: ProductsGridPageProps) {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <p className="text-xs uppercase tracking-[0.4em] text-gold-dark">{page.subtitle}</p>
         <h2 className="font-display text-3xl font-semibold text-bordeaux sm:text-4xl">{page.title}</h2>
-        <p className="mt-3 max-w-prose text-sm text-ink/80">{page.description}</p>
+        <p className="mt-3 max-w-prose font-display text-sm text-ink/80">{page.description}</p>
 
-        <div className="mt-10 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {page.products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

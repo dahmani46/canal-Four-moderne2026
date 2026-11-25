@@ -21,13 +21,26 @@ export function GalleryMosaicPage({ page }: { page: GalleryPageData }) {
               key={i}
               className={`group relative overflow-hidden rounded-xl2 shadow-soft ${SPAN_CLASSES[item.span]}`}
             >
-              <Image
-                src={item.image.src}
-                alt={item.image.alt}
-                fill
-                sizes="(min-width: 768px) 25vw, 50vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
+              {item.video ? (
+                <video
+                  src={item.video}
+                  className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Vidéo de la galerie"
+                />
+              ) : item.image ? (
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+              ) : null}
               {item.caption && (
                 <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-2 text-xs text-cream">
                   {item.caption}

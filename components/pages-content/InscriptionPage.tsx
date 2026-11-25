@@ -72,7 +72,7 @@ export function InscriptionPage({ page }: { page: InscriptionPageData }) {
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.4em] text-gold-dark">{page.subtitle}</p>
           <h2 className="font-display text-3xl font-semibold text-bordeaux sm:text-4xl">{page.title}</h2>
-          <p className="mx-auto mt-2 max-w-prose text-sm text-ink/70">{page.description}</p>
+          <p className="mx-auto mt-2 max-w-prose font-display text-sm text-ink/70">{page.description}</p>
         </div>
 
         {image && (

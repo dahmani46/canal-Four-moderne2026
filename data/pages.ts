@@ -168,12 +168,8 @@ export const pages: Page[] = [
         span: "hero",
       },
       {
-        image: { src: "/images/10_photos_le_four_du_canal/07_photo_four_du_canal.png", alt: "Les ingrédients de la bûche : œufs, farine, beurre, chocolat" },
-        span: "normal",
-      },
-      {
-        image: { src: "/images/10_photos_le_four_du_canal/08_photo_four_du_canal.png", alt: "Préparation du biscuit roulé au fouet" },
-        span: "normal",
+        video: "/video/gemini_generated_video_d37buchec0429.mp4",
+        span: "hero",
       },
       {
         image: { src: "/images/10_photos_le_four_du_canal/09_photo_four_du_canal.png", alt: "La bûche de Noël finale décorée" },

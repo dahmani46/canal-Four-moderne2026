@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CraftPage as CraftPageData } from "@/types/page";
+import { Snowfall } from "./Snowfall";
 
 interface CraftPageProps {
   page: CraftPageData;
@@ -7,11 +8,12 @@ interface CraftPageProps {
 
 export function CraftPage({ page }: CraftPageProps) {
   return (
-    <section id="savoir-faire" className="reveal w-full bg-bordeaux-dark py-20 text-cream md:py-28">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section id="savoir-faire" className="reveal relative w-full overflow-hidden bg-bordeaux-dark py-20 text-cream md:py-28">
+      <Snowfall />
+      <div className="relative mx-auto max-w-7xl px-6 md:px-12">
         <p className="text-xs uppercase tracking-[0.4em] text-gold">{page.subtitle}</p>
         <h2 className="font-display text-3xl font-semibold sm:text-4xl">{page.title}</h2>
-        <p className="mt-3 max-w-prose text-sm text-cream/80">{page.description}</p>
+        <p className="mt-3 max-w-prose font-display text-sm text-cream/80">{page.description}</p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {page.steps?.map((step, i) => (

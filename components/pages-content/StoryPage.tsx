@@ -6,7 +6,7 @@ interface StoryPageProps {
 }
 
 export function StoryPage({ page }: StoryPageProps) {
-  const [primary, secondary] = page.images ?? [];
+  const [, secondary] = page.images ?? [];
 
   return (
     <section id="presentation" className="reveal w-full bg-cream py-20 md:py-28">
@@ -16,7 +16,7 @@ export function StoryPage({ page }: StoryPageProps) {
           <h2 className="font-display text-3xl font-semibold text-bordeaux sm:text-4xl">
             {page.title}
           </h2>
-          <p className="max-w-prose text-ink/80">{page.description}</p>
+          <p className="max-w-prose font-display text-ink/80">{page.description}</p>
 
           {page.milestones && (
             <ul className="mt-2 flex flex-col gap-3 border-l-2 border-gold/50 pl-5">
@@ -31,15 +31,17 @@ export function StoryPage({ page }: StoryPageProps) {
         </div>
 
         <div className="relative h-80 w-full overflow-hidden rounded-xl2 shadow-soft sm:h-96 md:h-[28rem]">
-          {primary && (
-            <Image
-              src={primary.src}
-              alt={primary.alt}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-            />
-          )}
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/video/gemini_generated_video_gateaux.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Vidéo de gâteaux CANAL-FOUR"
+          />
+
           {secondary && (
             <div className="absolute bottom-4 right-4 hidden h-32 w-44 overflow-hidden rounded-xl2 border-4 border-cream shadow-soft md:block">
               <Image src={secondary.src} alt={secondary.alt} fill sizes="200px" className="object-cover" />

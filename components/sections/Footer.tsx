@@ -45,7 +45,21 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/10 px-6 py-6 text-center text-xs text-cream/40 md:px-12">
-        © {new Date().getFullYear()} Le Four du Canal — Tous droits réservés.
+        <p>© {new Date().getFullYear()} Le Four du Canal — Tous droits réservés.</p>
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
+          <a
+            href="/admin"
+            className="inline-block rounded-full border border-gold/60 px-5 py-2 text-[11px] uppercase tracking-[0.2em] text-gold transition hover:bg-gold hover:text-ink"
+          >
+            Espace admin
+          </a>
+          <a
+            href="/jury/login"
+            className="inline-block rounded-full border border-gold/60 px-5 py-2 text-[11px] uppercase tracking-[0.2em] text-gold transition hover:bg-gold hover:text-ink"
+          >
+            Espace jury
+          </a>
+        </div>
       </div>
     </footer>
   );

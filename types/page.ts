@@ -55,7 +55,8 @@ export interface CraftPage extends BasePage {
 }
 
 export interface GalleryItem {
-  image: MediaAsset;
+  image?: MediaAsset;
+  video?: string;
   caption?: string;
   span: "hero" | "wide" | "tall" | "normal";
 }
